@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     
     let k_USER_CELL_IDENTIFIER = "UserTableViewCellIdentifier"
     
+    let K_SEGUE_SHOW_USER_DETAIL = "ShowUserDetail"
+    
     @IBOutlet weak var tableview: UITableView!
     var users: [User] = []
     override func viewDidLoad() {
@@ -31,13 +33,21 @@ class ViewController: UIViewController {
 
     func callApi() async {
         do {
-            users = try await NetworkUtil.performUserListApiCall()
+            users = try await NetworkUtil.fetchUsers()
             DispatchQueue.main.async {
                 self.tableview.reloadData()
             }
-            print(users)
         } catch let error {
             print(error)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K_SEGUE_SHOW_USER_DETAIL, let user = sender as? User {
+            if let destinationVC = segue.destination as? UserDetailViewController {
+                destinationVC.user = user
+            }
         }
     }
 
@@ -45,8 +55,10 @@ class ViewController: UIViewController {
 
 
 extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        90
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let user = users[indexPath.row]
+        performSegue(withIdentifier: K_SEGUE_SHOW_USER_DETAIL, sender: user)
     }
 }
 
@@ -62,6 +74,10 @@ extension ViewController: UITableViewDataSource {
         cell.userImageView?.loadImage(url: user.avatarUrl)
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        90
     }
     
     

@@ -16,10 +16,11 @@
 		0878B6B72BDE284500EC457D /* GithubMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6B62BDE284500EC457D /* GithubMobileTests.swift */; };
 		0878B6C12BDE284500EC457D /* GithubMobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6C02BDE284500EC457D /* GithubMobileUITests.swift */; };
 		0878B6C32BDE284500EC457D /* GithubMobileUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6C22BDE284500EC457D /* GithubMobileUITestsLaunchTests.swift */; };
-		0878B6D02BDE32AB00EC457D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6CF2BDE32AB00EC457D /* User.swift */; };
 		0878B6D22BDF36DB00EC457D /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6D12BDF36DB00EC457D /* NetworkUtil.swift */; };
 		0878B6D52BDF495000EC457D /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6D42BDF495000EC457D /* UserTableViewCell.swift */; };
 		0878B6D82BDF53A700EC457D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6D72BDF53A700EC457D /* UIImageViewExtension.swift */; };
+		0878B6DA2BDF634200EC457D /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6D92BDF634200EC457D /* UserDetailViewController.swift */; };
+		0878B6DC2BDF692500EC457D /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6DB2BDF692500EC457D /* RepositoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +54,11 @@
 		0878B6BC2BDE284500EC457D /* GithubMobileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubMobileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0878B6C02BDE284500EC457D /* GithubMobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubMobileUITests.swift; sourceTree = "<group>"; };
 		0878B6C22BDE284500EC457D /* GithubMobileUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubMobileUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		0878B6CF2BDE32AB00EC457D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0878B6D12BDF36DB00EC457D /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 		0878B6D42BDF495000EC457D /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		0878B6D72BDF53A700EC457D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		0878B6D92BDF634200EC457D /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		0878B6DB2BDF692500EC457D /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,8 @@
 			children = (
 				0878B6A32BDE284000EC457D /* ViewController.swift */,
 				0878B6D42BDF495000EC457D /* UserTableViewCell.swift */,
+				0878B6D92BDF634200EC457D /* UserDetailViewController.swift */,
+				0878B6DB2BDF692500EC457D /* RepositoryTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -149,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				0878B6D12BDF36DB00EC457D /* NetworkUtil.swift */,
-				0878B6CF2BDE32AB00EC457D /* User.swift */,
 				0878B6D72BDF53A700EC457D /* UIImageViewExtension.swift */,
 			);
 			path = Util;
@@ -286,9 +289,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0878B6DC2BDF692500EC457D /* RepositoryTableViewCell.swift in Sources */,
 				0878B6D22BDF36DB00EC457D /* NetworkUtil.swift in Sources */,
 				0878B6D82BDF53A700EC457D /* UIImageViewExtension.swift in Sources */,
-				0878B6D02BDE32AB00EC457D /* User.swift in Sources */,
+				0878B6DA2BDF634200EC457D /* UserDetailViewController.swift in Sources */,
 				0878B6A42BDE284000EC457D /* ViewController.swift in Sources */,
 				0878B6A02BDE284000EC457D /* AppDelegate.swift in Sources */,
 				0878B6D52BDF495000EC457D /* UserTableViewCell.swift in Sources */,
