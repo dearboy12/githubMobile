@@ -11,6 +11,8 @@ class UserDetailViewController: UIViewController {
     
     let k_REPOSITTORY_CELL_IDENTIFIER = "RepositoryTableViewCellIdentifier"
     
+    let K_SEGUE_SHOW_REPOSITORY_DETAIL = "ShowRepositoryDetail"
+    
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -30,6 +32,17 @@ class UserDetailViewController: UIViewController {
     func setUpView() {
         repositoryTableView.dataSource = self
         repositoryTableView.delegate = self
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload))
+        navigationItem.rightBarButtonItem = refresh
+    }
+    
+    @objc func reload() {
+        if let user = user {
+            iconImageView.loadImage(url: user.avatarUrl)
+            Task {
+                await callApi(user: user)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +67,7 @@ class UserDetailViewController: UIViewController {
             repositories = allReps.filter({ res in
                 return !res.fork
             })
+            print(repositories)
             
             DispatchQueue.main.async {
                 self.nameLabel.text = userDetail.name ?? "-"
@@ -67,22 +81,33 @@ class UserDetailViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == K_SEGUE_SHOW_REPOSITORY_DETAIL {
+            if let destonationVC = segue.destination as? RepositoryDetailViewController, let repository = sender as? Repository {
+                destonationVC.repository = repository
+            }
+        }
     }
-    */
+
 
 }
+
+extension UserDetailViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let repository = repositories[indexPath.row]
+        performSegue(withIdentifier: K_SEGUE_SHOW_REPOSITORY_DETAIL, sender: repository)
+    }
+}
+
 
 extension UserDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Not Fork Repositories \(repositories.count)"
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         repositories.count
     }
@@ -90,12 +115,15 @@ extension UserDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: k_REPOSITTORY_CELL_IDENTIFIER, for: indexPath) as! RepositoryTableViewCell
         let repository = repositories[indexPath.row]
-        cell.textLabel?.text = repository.name + String(repository.stargazersCount)
+        cell.nameLabel.text = repository.name
+        cell.startCountLabel.text = "★ " + String(repository.stargazersCount)
+        cell.languageLabel.text = "Language: \(repository.language ?? "-")"
+        cell.descriptionLabel.text = repository.description
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
     }
 }
 
-
-extension UserDetailViewController: UITableViewDelegate {
-    
-}

@@ -21,6 +21,7 @@
 		0878B6D82BDF53A700EC457D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6D72BDF53A700EC457D /* UIImageViewExtension.swift */; };
 		0878B6DA2BDF634200EC457D /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6D92BDF634200EC457D /* UserDetailViewController.swift */; };
 		0878B6DC2BDF692500EC457D /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6DB2BDF692500EC457D /* RepositoryTableViewCell.swift */; };
+		0878B6DE2BDF816100EC457D /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0878B6DD2BDF816100EC457D /* RepositoryDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		0878B6D72BDF53A700EC457D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		0878B6D92BDF634200EC457D /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		0878B6DB2BDF692500EC457D /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		0878B6DD2BDF816100EC457D /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				0878B6D42BDF495000EC457D /* UserTableViewCell.swift */,
 				0878B6D92BDF634200EC457D /* UserDetailViewController.swift */,
 				0878B6DB2BDF692500EC457D /* RepositoryTableViewCell.swift */,
+				0878B6DD2BDF816100EC457D /* RepositoryDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				0878B6D22BDF36DB00EC457D /* NetworkUtil.swift in Sources */,
 				0878B6D82BDF53A700EC457D /* UIImageViewExtension.swift in Sources */,
 				0878B6DA2BDF634200EC457D /* UserDetailViewController.swift in Sources */,
+				0878B6DE2BDF816100EC457D /* RepositoryDetailViewController.swift in Sources */,
 				0878B6A42BDE284000EC457D /* ViewController.swift in Sources */,
 				0878B6A02BDE284000EC457D /* AppDelegate.swift in Sources */,
 				0878B6D52BDF495000EC457D /* UserTableViewCell.swift in Sources */,

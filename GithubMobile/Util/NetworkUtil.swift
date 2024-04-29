@@ -7,7 +7,7 @@
 
 import Foundation
 
-let K_TOKEN = <#Token#>
+let K_TOKEN: String? = nil
 
 enum NetworkError: Error {
     case invalidUrl
@@ -60,8 +60,11 @@ struct NetworkUtil {
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         request.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(K_TOKEN)", forHTTPHeaderField: "Authorization")
         request.setValue("2022-11-28", forHTTPHeaderField: "X-GitHub-Api-Version")
+        
+        if let token = K_TOKEN {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
         
         let (data, _) = try await URLSession.shared.data(for: request)
         let decoder = JSONDecoder()
@@ -79,8 +82,11 @@ struct NetworkUtil {
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         request.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(K_TOKEN)", forHTTPHeaderField: "Authorization")
         request.setValue("2022-11-28", forHTTPHeaderField: "X-GitHub-Api-Version")
+        
+        if let token = K_TOKEN {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
         
         let (data, _) = try await URLSession.shared.data(for: request)
         let decoder = JSONDecoder()
@@ -98,8 +104,11 @@ struct NetworkUtil {
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         request.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
-        request.setValue("Bearer \(K_TOKEN)", forHTTPHeaderField: "Authorization")
         request.setValue("2022-11-28", forHTTPHeaderField: "X-GitHub-Api-Version")
+        
+        if let token = K_TOKEN {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
         
         let (data, _) = try await URLSession.shared.data(for: request)
         let decoder = JSONDecoder()

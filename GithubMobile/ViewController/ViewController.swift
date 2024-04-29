@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     
     let K_SEGUE_SHOW_USER_DETAIL = "ShowUserDetail"
     
+    let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    
     @IBOutlet weak var tableview: UITableView!
     var users: [User] = []
     override func viewDidLoad() {
@@ -29,13 +31,27 @@ class ViewController: UIViewController {
         title = "Users"
         tableview.dataSource = self
         tableview.delegate = self
+        
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reload))
+        let activityButtonItem  = UIBarButtonItem(customView: activityIndicator)
+        navigationItem.setRightBarButton(activityButtonItem, animated: true)
+        navigationItem.rightBarButtonItem = refresh
+        navigationItem.leftBarButtonItem = activityButtonItem;
     }
 
+    @objc func reload() {
+        Task {
+            await callApi()
+        }
+    }
+    
     func callApi() async {
+        activityIndicator.startAnimating()
         do {
             users = try await NetworkUtil.fetchUsers()
             DispatchQueue.main.async {
                 self.tableview.reloadData()
+                self.activityIndicator.stopAnimating()
             }
         } catch let error {
             print(error)
