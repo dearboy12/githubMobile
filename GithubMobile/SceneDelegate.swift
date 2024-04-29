@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  GithubMobile
 //
-//  Created by sarunyoo.lamungkun on 2024/04/28.
+//  Created by dearboy on 2024/04/28.
 //
 
 import UIKit
